@@ -45,10 +45,6 @@ export class GeolocationService {
   }
 
   async setCheckIn(id, payload: UpdateGeolocationInput) {
-    console.log(
-      '🚀 ~ file: geolocation.service.ts ~ line 48 ~ GeolocationService ~ setCheckIn ~ payload',
-      payload,
-    );
     const region = await this.geolocationModel.findByIdAndUpdate(
       id,
       { $set: payload },
@@ -75,10 +71,12 @@ export class GeolocationService {
   }
 
   async removeRegion(id: any) {
-    const regions = await this.geolocationModel.findByIdAndDelete(id);
+    const region = await this.geolocationModel.findByIdAndDelete(id);
 
-    if (regions) {
-      return 'Region deleted';
+    if (!region) {
+      throw new NotFoundException('This region not exist');
     }
+
+    return 'Region deleted';
   }
 }

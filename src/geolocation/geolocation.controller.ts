@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  HttpException,
   Param,
   Patch,
   Post,
@@ -63,9 +64,14 @@ export class GeolocationController {
     @Param('id') id: MongoIdPipe,
     @Body() payload: UpdateGeolocationInput,
   ) {
-    const region = await this.geolocationService.setCheckIn(id, payload);
+    const { checkIn } = payload;
+    if (!checkIn) {
+      throw new HttpException('Need checkIn variable', 400);
+    }
 
-    return { message: 'Region created', region };
+    const region = await this.geolocationService.setCheckIn(id, { checkIn });
+
+    return { message: 'Region check-in seted', region };
   }
 
   @Public()
@@ -74,7 +80,12 @@ export class GeolocationController {
     @Param('id') id: MongoIdPipe,
     @Body() payload: UpdateGeolocationInput,
   ) {
-    const region = await this.geolocationService.setCheckOut(id, payload);
+    const { checkOut } = payload;
+    if (!checkOut) {
+      throw new HttpException('Need checkOut variable', 400);
+    }
+
+    const region = await this.geolocationService.setCheckOut(id, { checkOut });
 
     return { message: 'Region check-out seted', region };
   }
