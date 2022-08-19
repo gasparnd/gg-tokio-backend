@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { ApiKeyGuard } from 'src/auth/api-key.guard';
+import { Public } from 'src/auth/public.decorator';
 import { MongoIdPipe } from 'src/common/mongo-id.pipe';
 import { GeolocationService } from './geolocation.service';
 import {
@@ -23,6 +24,7 @@ import {
 export class GeolocationController {
   constructor(private geolocationService: GeolocationService) {}
 
+  @Public()
   @Get()
   async getRegions() {
     const regions = await this.geolocationService.getRegions();
@@ -30,6 +32,7 @@ export class GeolocationController {
     return { message: 'Regions listed', regions };
   }
 
+  @Public()
   @Get('/:id')
   async getOne(@Param('id') id: MongoIdPipe) {
     const region = await this.geolocationService.getOne(id);
@@ -54,6 +57,7 @@ export class GeolocationController {
     return { message: 'Region updated', region };
   }
 
+  @Public()
   @Patch('/checkIn/:id')
   async setCheckIn(
     @Param('id') id: MongoIdPipe,
@@ -64,6 +68,7 @@ export class GeolocationController {
     return { message: 'Region created', region };
   }
 
+  @Public()
   @Patch('/checkOut/:id')
   async setCheckOut(
     @Param('id') id: MongoIdPipe,
