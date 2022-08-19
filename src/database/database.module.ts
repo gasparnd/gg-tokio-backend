@@ -38,6 +38,6 @@ import config from '../config';
       inject: [config.KEY],
     },
   ],
-  exports: ['API_KEY', 'MONGO', MongooseModule],
+  exports: ['MONGO', MongooseModule],
 })
 export class DatabaseModule {}
