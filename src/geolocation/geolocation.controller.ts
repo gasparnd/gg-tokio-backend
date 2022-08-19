@@ -6,8 +6,10 @@ import {
   Param,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { ApiKeyGuard } from 'src/auth/api-key.guard';
 import { MongoIdPipe } from 'src/common/mongo-id.pipe';
 import { GeolocationService } from './geolocation.service';
 import {
@@ -16,6 +18,7 @@ import {
 } from './inputs/geolocation-create-input';
 
 @ApiTags('geolocation')
+@UseGuards(ApiKeyGuard)
 @Controller('geolocation')
 export class GeolocationController {
   constructor(private geolocationService: GeolocationService) {}

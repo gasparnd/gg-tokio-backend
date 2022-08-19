@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { GeolocationModule } from './geolocation/geolocation.module';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 import * as Joi from 'joi';
 import config from './config';
 
@@ -18,10 +19,12 @@ import config from './config';
         MONGO_USERNAME: Joi.string().required(),
         MONGO_PASSWORD: Joi.string().required(),
         MONGO_CONNECTION: Joi.string().required(),
+        API_KEY: Joi.string().required(),
       }),
     }),
     GeolocationModule,
     DatabaseModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -8,5 +8,6 @@ export default registerAs('config', () => {
       password: process.env.MONGO_PASSWORD,
       connection: process.env.MONGO_CONNECTION,
     },
+    apiKey: process.env.API_KEY,
   };
 });
