@@ -17,7 +17,9 @@ export class MercadopagoController {
   }
 
   @Post('checkout')
-  checkoutPayment(@Body() payload: MPCheckoutInput) {
-    return this.mpServices.chekout(payload);
+  async checkoutPayment(@Body() payload: MPCheckoutInput) {
+    const checkout = await this.mpServices.chekout(payload);
+
+    return { message: 'Order generated', paymentLink: checkout };
   }
 }

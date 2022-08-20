@@ -29,7 +29,7 @@ export class MercadopagoService {
       const mpRes = await mercadopago.preferences.create(preferences);
 
       if (mpRes) {
-        return mpRes;
+        return mpRes.body.init_point;
       }
     } catch (error) {
       console.log(error);
