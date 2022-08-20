@@ -8,6 +8,10 @@ export default registerAs('config', () => {
       password: process.env.MONGO_PASSWORD,
       connection: process.env.MONGO_CONNECTION,
     },
+    mercadopago: {
+      publicKey: process.env.MERCADO_PAGO_PUBLIC_KEY,
+      accessToken: process.env.MERCADO_PAGO_ACCESS_TOKEN,
+    },
     apiKey: process.env.API_KEY,
   };
 });
