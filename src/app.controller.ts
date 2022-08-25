@@ -11,7 +11,6 @@ import { AppService } from './app.service';
 import { ApiKeyGuard } from './auth/api-key.guard';
 import { Public } from './auth/public.decorator';
 import { Express } from 'express';
-import fs from 'fs';
 
 @UseGuards(ApiKeyGuard)
 @Controller()
