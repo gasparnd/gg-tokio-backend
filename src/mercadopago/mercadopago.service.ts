@@ -15,12 +15,21 @@ export class MercadopagoService {
   }
 
   async chekout(payload: MPCheckoutInput) {
+    console.log(
+      '🚀 ~ file: mercadopago.service.ts:18 ~ MercadopagoService ~ chekout ~ payload',
+      payload,
+    );
     const preferences = {
       ...payload,
+      marketplace_fee: 5,
       back_urls: {
         success: 'https://gasparnd.vercel.app/',
       },
     };
+    console.log(
+      '🚀 ~ file: mercadopago.service.ts:23 ~ MercadopagoService ~ chekout ~ preferences',
+      preferences,
+    );
     try {
       mercadopago.configure({
         access_token: this.configService.mercadopago.accessToken,
@@ -29,6 +38,10 @@ export class MercadopagoService {
       const mpRes = await mercadopago.preferences.create(preferences);
 
       if (mpRes) {
+        console.log(
+          '🚀 ~ file: mercadopago.service.ts:33 ~ MercadopagoService ~ chekout ~ mpRes',
+          mpRes,
+        );
         return mpRes.body.init_point;
       }
     } catch (error) {

@@ -11,6 +11,7 @@ import { AppService } from './app.service';
 import { ApiKeyGuard } from './auth/api-key.guard';
 import { Public } from './auth/public.decorator';
 import { Express } from 'express';
+import fs from 'fs';
 
 @UseGuards(ApiKeyGuard)
 @Controller()
@@ -27,6 +28,12 @@ export class AppController {
   @UseInterceptors(FileInterceptor('file'))
   async uploadFile(@UploadedFile() file: Express.Multer.File) {
     console.log(file);
+    if (file) {
+      fs.writeFileSync(
+        `/Users/gaspar/Documents/UploadedFiles/${file.filename}.mp4`,
+        file.buffer,
+      );
+    }
   }
 
   @Public()
