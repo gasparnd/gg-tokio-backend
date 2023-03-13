@@ -34,4 +34,8 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# ENV
 .env
+
+# DB
+/mongo_data
