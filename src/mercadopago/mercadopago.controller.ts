@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { ApiKeyGuard } from 'src/auth/api-key.guard';
-import { MPCheckoutInput } from './inputs/mp-checkout-input';
+import { MPCheckoutInput } from './dto/inputs';
 import { MercadopagoService } from './mercadopago.service';
 
 @ApiTags('mercadopago')

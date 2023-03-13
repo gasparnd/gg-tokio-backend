@@ -3,7 +3,7 @@ import { ConfigType } from '@nestjs/config';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const mercadopago = require('mercadopago');
 import config from 'src/config';
-import { MPCheckoutInput } from './inputs/mp-checkout-input';
+import { MPCheckoutInput } from './dto/inputs';
 
 @Injectable()
 export class MercadopagoService {

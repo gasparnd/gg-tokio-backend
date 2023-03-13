@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { UpdateGeolocationInput } from './dto/inputs';
 import { Geolocation } from './geolocation.schema';
-import { UpdateGeolocationInput } from './inputs/geolocation-create-input';
 
 @Injectable()
 export class GeolocationService {

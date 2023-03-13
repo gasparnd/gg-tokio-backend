@@ -1,4 +1,4 @@
-import { ApiProperty, PartialType } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 import {
   IsArray,
   IsDate,
@@ -39,7 +39,3 @@ export class CreateGeolocationInput {
   @ApiProperty({ description: 'region check location [longitude, longitude]' })
   readonly checkLocation: [number, number];
 }
-
-export class UpdateGeolocationInput extends PartialType(
-  CreateGeolocationInput,
-) {}

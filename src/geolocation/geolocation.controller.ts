@@ -14,10 +14,7 @@ import { ApiKeyGuard } from 'src/auth/api-key.guard';
 import { Public } from 'src/auth/public.decorator';
 import { MongoIdPipe } from 'src/common/mongo-id.pipe';
 import { GeolocationService } from './geolocation.service';
-import {
-  CreateGeolocationInput,
-  UpdateGeolocationInput,
-} from './inputs/geolocation-create-input';
+import { CreateGeolocationInput, UpdateGeolocationInput } from './dto/inputs';
 
 @ApiTags('geolocation')
 @UseGuards(ApiKeyGuard)
