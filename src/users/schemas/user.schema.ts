@@ -1,10 +1,14 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { ObjectType, Field } from '@nestjs/graphql';
+import { ObjectType, Field, ID } from '@nestjs/graphql';
 
 @Schema()
 @ObjectType()
 export class User extends Document {
+  @Prop()
+  @Field(() => ID)
+  id: string;
+
   @Prop()
   @Field(() => String)
   firstName: string;
@@ -13,21 +17,25 @@ export class User extends Document {
   @Field(() => String)
   lastName: string;
 
-  @Prop()
+  @Prop({ unique: true })
   @Field(() => String)
   email: string;
+
+  @Prop({ unique: true })
+  @Field(() => String)
+  nikname: string;
 
   @Prop()
   @Field(() => String)
   password: string;
 
-  @Prop()
+  @Prop({ default: ['user'] })
   @Field(() => [String], { nullable: true })
   roles: string[];
 
-  @Prop()
+  @Prop({ default: true })
   @Field(() => Boolean, { nullable: true })
   isActive: boolean;
 }
 
-export const GeolocationSchema = SchemaFactory.createForClass(Geolocation);
+export const UserSchema = SchemaFactory.createForClass(User);
