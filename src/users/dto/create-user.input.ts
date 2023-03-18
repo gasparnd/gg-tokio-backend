@@ -16,7 +16,7 @@ export class CreateUserInput {
   @Field(() => String)
   @IsString()
   @IsNotEmpty()
-  firstName: string;
+  name: string;
 
   @Field(() => String)
   @IsString()
@@ -45,10 +45,10 @@ export class CreateUserInput {
   @IsString()
   @IsOptional()
   @IsArray()
-  roles: string[];
+  roles?: string[];
 
   @Field(() => Boolean, { nullable: true })
   @IsOptional()
   @IsBoolean()
-  isActive: boolean;
+  isActive?: boolean;
 }

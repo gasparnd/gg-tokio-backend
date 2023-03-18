@@ -1,17 +1,13 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
-import { ObjectType, Field, ID } from '@nestjs/graphql';
+import { ObjectType, Field } from '@nestjs/graphql';
+import { Base } from 'src/customization/schemas/base.schema';
 
 @Schema()
-@ObjectType()
-export class User extends Document {
-  @Prop()
-  @Field(() => ID)
-  id: string;
-
+@ObjectType({ implements: [Base] })
+export class User extends Base {
   @Prop()
   @Field(() => String)
-  firstName: string;
+  name: string;
 
   @Prop()
   @Field(() => String)
